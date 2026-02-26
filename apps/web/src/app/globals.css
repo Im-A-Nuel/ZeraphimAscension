@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Share+Tech+Mono&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import '../styles/dashboard.css';
+
+:root {
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #0a0a0a;
+  color: #f5f5f5;
+  font-feature-settings: "rlig" 1, "calt" 1;
+}
+
+.bg-default {
+  background: #0a0a0a;
+}
+
+.bg-main {
+  background: #111111;
+}
+
+.bg-elevated {
+  background: #1a1a1a;
+}
+
+.text-default {
+  color: #f5f5f5;
+}
+
+.text-mute {
+  color: #9a9a9a;
+}
+
+.text-muted {
+  color: #9a9a9a;
+}
+
+.border-default {
+  border-color: #2a2a2a;
+}
+
+.btn-primary {
+  cursor: pointer;
+  border: 1px solid #3a3a3a;
+  background: #f5f5f5;
+  color: #0a0a0a;
+  border-radius: 10px;
+  padding: 0.65rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: opacity 0.2s ease;
+}
+
+.btn-primary:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  cursor: pointer;
+  border: 1px solid #3a3a3a;
+  background: #141414;
+  color: #f5f5f5;
+  border-radius: 10px;
+  padding: 0.65rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: opacity 0.2s ease;
+}
+
+.btn-secondary:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.wallet-select {
+  border: 1px solid #3a3a3a;
+  background: #141414;
+  color: #f5f5f5;
+  border-radius: 10px;
+  padding: 0.65rem 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  min-width: 170px;
+}
+
+.wallet-select:focus {
+  outline: 1px solid #6a6a6a;
+}
+
+.card {
+  border: 1px solid #2a2a2a;
+  background: #111111;
+  border-radius: 14px;
+  padding: 1rem;
+}
+
+.card-main {
+  border: 1px solid #2a2a2a;
+  background: #111111;
+  border-radius: 14px;
+  padding: 1rem;
+}
+
+.container-main {
+  width: min(1100px, calc(100% - 2rem));
+  margin-inline: auto;
+}

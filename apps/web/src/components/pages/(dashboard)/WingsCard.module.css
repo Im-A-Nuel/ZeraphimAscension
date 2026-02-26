@@ -1,0 +1,413 @@
+.wings {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(140deg, rgba(18, 15, 8, 0.97) 0%, rgba(9, 9, 9, 0.95) 100%);
+  border: 1px solid rgba(240, 200, 104, 0.48);
+  clip-path: polygon(
+    0 0,
+    calc(100% - 12px) 0,
+    100% 12px,
+    100% 100%,
+    12px 100%,
+    0 calc(100% - 12px)
+  );
+  padding: clamp(1rem, 2vw, 1.2rem);
+  min-height: clamp(620px, calc(100vh - 260px), 760px);
+  overflow: hidden;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.55rem;
+  margin-bottom: 0.85rem;
+  padding-bottom: 0.7rem;
+  border-bottom: 1px solid rgba(240, 200, 104, 0.18);
+}
+
+.titleGroup {
+  display: flex;
+  align-items: center;
+  gap: 0.48rem;
+  min-width: 0;
+}
+
+.titleIcon {
+  color: rgba(255, 217, 102, 0.82);
+  flex: 0 0 auto;
+}
+
+.title {
+  margin: 0;
+  font-family: "Orbitron", sans-serif;
+  font-size: clamp(0.92rem, 1.5vw, 1.08rem);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #ffd966;
+  text-shadow: 0 0 10px rgba(255, 217, 102, 0.35);
+}
+
+.tierBadge {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.34rem 0.6rem;
+  border: 1px solid rgba(255, 217, 102, 0.36);
+  background: linear-gradient(135deg, rgba(255, 217, 102, 0.13), rgba(255, 217, 102, 0.04));
+  clip-path: polygon(
+    6px 0,
+    100% 0,
+    100% calc(100% - 6px),
+    calc(100% - 6px) 100%,
+    0 100%,
+    0 6px
+  );
+}
+
+.tierLabel {
+  font-family: "Share Tech Mono", monospace;
+  font-size: 0.55rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: rgba(255, 217, 102, 0.68);
+}
+
+.tierValue {
+  font-family: "Orbitron", sans-serif;
+  font-size: 1.04rem;
+  font-weight: 800;
+  color: #ffd966;
+  text-shadow: 0 0 10px rgba(255, 217, 102, 0.42);
+}
+
+.wingsVisual {
+  position: relative;
+  height: 132px;
+  margin-bottom: 0.88rem;
+  border: 1px solid rgba(240, 200, 104, 0.16);
+  background:
+    radial-gradient(circle at center, rgba(255, 217, 102, 0.12), rgba(10, 10, 10, 0.35) 66%),
+    linear-gradient(140deg, rgba(255, 217, 102, 0.04), rgba(255, 217, 102, 0));
+  overflow: hidden;
+}
+
+.visualWing {
+  position: absolute;
+  top: 18px;
+  width: 136px;
+  height: auto;
+  opacity: 0.46;
+  filter: drop-shadow(0 0 12px rgba(255, 217, 102, 0.24));
+}
+
+.visualWingLeft {
+  left: calc(50% - 80px);
+  transform: translateX(-100%) rotate(-13deg);
+  animation: wing-sweep-left 7s ease-in-out infinite;
+}
+
+.visualWingRight {
+  right: calc(50% - 80px);
+  transform: translateX(100%) scaleX(-1) rotate(-13deg);
+  animation: wing-sweep-right 7s ease-in-out infinite;
+}
+
+.visualHalo {
+  position: absolute;
+  left: 50%;
+  top: 16px;
+  transform: translateX(-50%);
+  opacity: 0.92;
+  filter: drop-shadow(0 0 13px rgba(255, 217, 102, 0.42));
+  animation: halo-pulse 5.2s ease-in-out infinite;
+}
+
+.visualCore {
+  position: absolute;
+  left: 50%;
+  top: 54px;
+  width: 3px;
+  height: 46px;
+  transform: translateX(-50%);
+  background: linear-gradient(to bottom, rgba(255, 217, 102, 0.8), rgba(255, 217, 102, 0));
+}
+
+.visualTier {
+  position: absolute;
+  left: 50%;
+  bottom: 7px;
+  transform: translateX(-50%);
+  font-family: "Share Tech Mono", monospace;
+  font-size: 0.57rem;
+  text-transform: uppercase;
+  letter-spacing: 0.11em;
+  color: rgba(255, 217, 102, 0.8);
+}
+
+.statusSection {
+  margin-bottom: 0.88rem;
+}
+
+.currentTier {
+  margin-bottom: 0.58rem;
+}
+
+.statusLabel {
+  margin: 0 0 0.28rem;
+  font-family: "Share Tech Mono", monospace;
+  font-size: 0.57rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: rgba(255, 217, 102, 0.6);
+}
+
+.statusValue {
+  margin: 0;
+  font-family: "Orbitron", sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.progressBar {
+  position: relative;
+  height: 30px;
+  border: 1px solid rgba(240, 200, 104, 0.3);
+  background: rgba(15, 13, 8, 0.78);
+  clip-path: polygon(
+    5px 0,
+    100% 0,
+    100% calc(100% - 5px),
+    calc(100% - 5px) 100%,
+    0 100%,
+    0 5px
+  );
+  overflow: hidden;
+}
+
+.progressFill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  height: 100%;
+  background: linear-gradient(90deg, #f3c95d, #d7aa3b);
+  transition: width 0.35s ease;
+  box-shadow: 0 0 12px rgba(255, 217, 102, 0.34);
+}
+
+.progressText {
+  position: relative;
+  z-index: 1;
+  display: block;
+  line-height: 30px;
+  text-align: center;
+  font-family: "Share Tech Mono", monospace;
+  font-size: 0.66rem;
+  letter-spacing: 0.05em;
+  color: #ffffff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.85);
+}
+
+.actions {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.45rem;
+}
+
+.btnMint,
+.btnEvolve {
+  width: 100%;
+  min-height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.38rem;
+  border: 1px solid rgba(240, 200, 104, 0.45);
+  clip-path: polygon(
+    6px 0,
+    100% 0,
+    100% calc(100% - 6px),
+    calc(100% - 6px) 100%,
+    0 100%,
+    0 6px
+  );
+  padding: 0.56rem 0.68rem;
+  cursor: pointer;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+  font-family: "Share Tech Mono", monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.66rem;
+  font-weight: 700;
+}
+
+.btnMint {
+  background: rgba(10, 10, 10, 0.9);
+  color: #ffd966;
+}
+
+.btnMint:hover:not(:disabled) {
+  border-color: rgba(255, 217, 102, 0.72);
+  box-shadow: 0 0 12px rgba(255, 217, 102, 0.22);
+}
+
+.btnEvolve {
+  background: linear-gradient(135deg, #f3c95d, #d7aa3b);
+  color: #151005;
+}
+
+.btnEvolve:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 0 14px rgba(255, 217, 102, 0.34);
+}
+
+.btnMint:disabled,
+.btnEvolve:disabled {
+  background: rgba(38, 38, 38, 0.64);
+  border-color: rgba(110, 110, 110, 0.28);
+  color: rgba(198, 198, 198, 0.52);
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
+.btnIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.actionHint {
+  margin: 0.52rem 0 0.95rem;
+  font-family: "Share Tech Mono", monospace;
+  font-size: 0.58rem;
+  line-height: 1.42;
+  letter-spacing: 0.03em;
+  color: rgba(245, 234, 208, 0.64);
+  min-height: 1.55em;
+}
+
+.requirements {
+  margin-top: auto;
+  padding: 0.72rem;
+  border: 1px solid rgba(240, 200, 104, 0.2);
+  background: rgba(7, 7, 7, 0.62);
+  clip-path: polygon(
+    5px 0,
+    100% 0,
+    100% calc(100% - 5px),
+    calc(100% - 5px) 100%,
+    0 100%,
+    0 5px
+  );
+}
+
+.reqTitle {
+  margin: 0 0 0.5rem;
+  font-family: "Share Tech Mono", monospace;
+  font-size: 0.56rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: rgba(255, 217, 102, 0.72);
+}
+
+.reqGrid {
+  display: grid;
+  gap: 0.34rem;
+}
+
+.reqItem {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0.46rem;
+  align-items: center;
+}
+
+.reqLabel,
+.reqValue {
+  font-family: "Share Tech Mono", monospace;
+  font-size: 0.61rem;
+  line-height: 1.35;
+}
+
+.reqLabel {
+  color: rgba(255, 217, 102, 0.64);
+}
+
+.reqValue {
+  color: #f5ead0;
+  text-align: right;
+}
+
+.glow {
+  position: absolute;
+  top: -42%;
+  right: -30%;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 217, 102, 0.16), rgba(255, 217, 102, 0));
+  filter: blur(28px);
+  pointer-events: none;
+  animation: pulse 4.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 0.32;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.52;
+    transform: scale(1.12);
+  }
+}
+
+@keyframes halo-pulse {
+  0%,
+  100% {
+    transform: translateX(-50%) scale(0.98);
+    opacity: 0.86;
+  }
+  50% {
+    transform: translateX(-50%) scale(1.06);
+    opacity: 1;
+  }
+}
+
+@keyframes wing-sweep-left {
+  0%,
+  100% {
+    transform: translateX(-100%) rotate(-13deg);
+  }
+  50% {
+    transform: translateX(-100%) translateY(-3px) rotate(-9deg);
+  }
+}
+
+@keyframes wing-sweep-right {
+  0%,
+  100% {
+    transform: translateX(100%) scaleX(-1) rotate(-13deg);
+  }
+  50% {
+    transform: translateX(100%) translateY(-3px) scaleX(-1) rotate(-9deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .visualWing,
+  .visualHalo,
+  .glow {
+    animation: none;
+  }
+}
+
+@media (max-width: 1024px) {
+  .wings {
+    min-height: 0;
+  }
+}

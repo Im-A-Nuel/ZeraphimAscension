@@ -1,0 +1,16 @@
+{
+  "name": "scripts",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "faucet": "tsx faucet.ts"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.5"
+  },
+  "devDependencies": {
+    "tsx": "^4.19.0",
+    "typescript": "^5.7.0",
+    "@types/node": "^22.10.0"
+  }
+}

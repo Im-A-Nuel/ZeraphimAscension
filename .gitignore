@@ -1,0 +1,15 @@
+node_modules/
+dist/
+build/
+.next/
+out/
+.env
+.env.local
+.env.*.local
+*.db
+*.db-journal
+move/zeraphim_ascension/build/
+.turbo/
+.vercel/
+coverage/
+*.tsbuildinfo

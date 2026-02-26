@@ -1,0 +1,402 @@
+.panel {
+  position: relative;
+  background: linear-gradient(
+    150deg,
+    rgba(18, 15, 8, 0.98) 0%,
+    rgba(10, 10, 10, 0.96) 100%
+  );
+  border: 1px solid rgba(240, 200, 104, 0.5);
+  clip-path: polygon(
+    0 0,
+    calc(100% - 16px) 0,
+    100% 16px,
+    100% 100%,
+    16px 100%,
+    0 calc(100% - 16px)
+  );
+  padding: clamp(1.2rem, 2.2vw, 1.6rem);
+  overflow: hidden;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid rgba(240, 200, 104, 0.2);
+}
+
+.titleGroup {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.headerIcon {
+  color: rgba(255, 217, 102, 0.9);
+  filter: drop-shadow(0 0 8px rgba(255, 217, 102, 0.35));
+}
+
+.title {
+  margin: 0;
+  font-family: "Orbitron", sans-serif;
+  font-size: 0.98rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.11em;
+  color: #ffd966;
+}
+
+.status {
+  font-family: "Share Tech Mono", monospace;
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  padding: 0.35rem 0.6rem;
+  border: 1px solid rgba(255, 217, 102, 0.35);
+  color: rgba(255, 217, 102, 0.76);
+  background: rgba(255, 217, 102, 0.06);
+}
+
+.sigil {
+  position: relative;
+  height: 110px;
+  margin-bottom: 1rem;
+  border: 1px solid rgba(240, 200, 104, 0.2);
+  background: radial-gradient(circle at center, rgba(255, 217, 102, 0.12), rgba(12, 12, 12, 0.3) 65%);
+  overflow: hidden;
+}
+
+.guardWing {
+  position: absolute;
+  top: 20px;
+  width: 96px;
+  height: auto;
+  opacity: 0.5;
+  filter: drop-shadow(0 0 12px rgba(255, 217, 102, 0.3));
+}
+
+.guardWingLeft {
+  left: calc(50% - 78px);
+  transform: translateX(-100%) rotate(-14deg);
+  animation: wing-drift-left 6.5s ease-in-out infinite;
+}
+
+.guardWingRight {
+  right: calc(50% - 78px);
+  transform: translateX(100%) scaleX(-1) rotate(-14deg);
+  animation: wing-drift-right 6.5s ease-in-out infinite;
+}
+
+.halo {
+  position: absolute;
+  left: 50%;
+  top: 20px;
+  transform: translateX(-50%);
+  opacity: 0.95;
+  filter: drop-shadow(0 0 14px rgba(255, 217, 102, 0.5));
+  animation: halo-pulse 5s ease-in-out infinite;
+}
+
+.pillar {
+  position: absolute;
+  left: 50%;
+  bottom: 12px;
+  width: 3px;
+  height: 40px;
+  transform: translateX(-50%);
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 217, 102, 0.85),
+    rgba(255, 217, 102, 0)
+  );
+}
+
+.objective {
+  margin-bottom: 1rem;
+}
+
+.objectiveLabel {
+  margin: 0 0 0.35rem;
+  font-family: "Share Tech Mono", monospace;
+  font-size: 0.64rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 217, 102, 0.58);
+}
+
+.objectiveTitle {
+  margin: 0;
+  font-family: "Orbitron", sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #f5ead0;
+}
+
+.objectiveDetail {
+  margin: 0.45rem 0 0;
+  font-family: "Share Tech Mono", monospace;
+  font-size: 0.68rem;
+  line-height: 1.5;
+  color: rgba(245, 234, 208, 0.78);
+}
+
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.45rem;
+  margin-bottom: 0.9rem;
+}
+
+.metricItem {
+  padding: 0.45rem;
+  border: 1px solid rgba(240, 200, 104, 0.24);
+  background: rgba(12, 12, 12, 0.72);
+  text-align: center;
+}
+
+.metricLabel {
+  display: block;
+  font-family: "Share Tech Mono", monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 217, 102, 0.6);
+}
+
+.metricValue {
+  display: block;
+  margin-top: 0.25rem;
+  font-family: "Orbitron", sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #ffd966;
+}
+
+.challengePanel {
+  margin-bottom: 0.9rem;
+  padding: 0.6rem;
+  border: 1px solid rgba(240, 200, 104, 0.22);
+  background: rgba(9, 9, 9, 0.74);
+}
+
+.challengeTitle {
+  margin: 0;
+  font-family: "Orbitron", sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #f5ead0;
+}
+
+.challengeHint {
+  margin: 0.32rem 0 0.65rem;
+  font-family: "Share Tech Mono", monospace;
+  font-size: 0.6rem;
+  line-height: 1.45;
+  color: rgba(245, 234, 208, 0.72);
+}
+
+.challengeList {
+  display: grid;
+  gap: 0.48rem;
+}
+
+.challengeItem {
+  padding: 0.45rem;
+  border: 1px solid rgba(240, 200, 104, 0.2);
+  background: rgba(12, 12, 12, 0.78);
+}
+
+.challengeHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.45rem;
+}
+
+.challengeName {
+  margin: 0;
+  font-family: "Share Tech Mono", monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #f5ead0;
+}
+
+.challengeValue {
+  font-family: "Share Tech Mono", monospace;
+  font-size: 0.58rem;
+  padding: 0.16rem 0.32rem;
+  border: 1px solid rgba(240, 200, 104, 0.28);
+  color: rgba(255, 217, 102, 0.84);
+}
+
+.challengeComplete {
+  border-color: rgba(178, 244, 184, 0.5);
+  color: rgba(178, 244, 184, 0.9);
+  background: rgba(80, 165, 95, 0.12);
+}
+
+.challengeText {
+  margin: 0.26rem 0 0.42rem;
+  font-family: "Share Tech Mono", monospace;
+  font-size: 0.56rem;
+  line-height: 1.45;
+  color: rgba(245, 234, 208, 0.64);
+}
+
+.challengeBarTrack {
+  height: 4px;
+  border-radius: 999px;
+  background: rgba(255, 217, 102, 0.16);
+  overflow: hidden;
+}
+
+.challengeBarFill {
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 217, 102, 0.45),
+    rgba(255, 217, 102, 0.95)
+  );
+}
+
+.actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.45rem;
+}
+
+.actionLink {
+  text-decoration: none;
+  text-align: center;
+  font-family: "Share Tech Mono", monospace;
+  font-size: 0.64rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  padding: 0.55rem 0.5rem;
+  color: rgba(255, 217, 102, 0.82);
+  border: 1px solid rgba(240, 200, 104, 0.3);
+  background: rgba(12, 12, 12, 0.8);
+  transition: border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.actionLink:hover {
+  color: #ffd966;
+  border-color: rgba(255, 217, 102, 0.6);
+  box-shadow: 0 0 10px rgba(255, 217, 102, 0.2);
+}
+
+.emberField {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.ember {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: rgba(255, 217, 102, 0.85);
+  opacity: 0;
+  animation: ember-rise 5s ease-in-out infinite;
+}
+
+.ember:nth-child(1) {
+  left: 18%;
+  bottom: 18%;
+  animation-delay: 0s;
+}
+
+.ember:nth-child(2) {
+  left: 62%;
+  bottom: 12%;
+  animation-delay: 1.4s;
+}
+
+.ember:nth-child(3) {
+  left: 86%;
+  bottom: 26%;
+  animation-delay: 2.3s;
+}
+
+.glow {
+  position: absolute;
+  right: -20%;
+  top: -14%;
+  width: 180px;
+  height: 180px;
+  background: radial-gradient(circle, rgba(255, 217, 102, 0.16), rgba(255, 217, 102, 0));
+  filter: blur(18px);
+  pointer-events: none;
+}
+
+@keyframes halo-pulse {
+  0%,
+  100% {
+    transform: translateX(-50%) scale(0.98);
+    opacity: 0.85;
+  }
+  50% {
+    transform: translateX(-50%) scale(1.06);
+    opacity: 1;
+  }
+}
+
+@keyframes wing-drift-left {
+  0%,
+  100% {
+    transform: translateX(-100%) rotate(-14deg);
+  }
+  50% {
+    transform: translateX(-100%) translateY(-3px) rotate(-10deg);
+  }
+}
+
+@keyframes wing-drift-right {
+  0%,
+  100% {
+    transform: translateX(100%) scaleX(-1) rotate(-14deg);
+  }
+  50% {
+    transform: translateX(100%) translateY(-3px) scaleX(-1) rotate(-10deg);
+  }
+}
+
+@keyframes ember-rise {
+  0% {
+    opacity: 0;
+    transform: translateY(0) scale(0.8);
+  }
+  40% {
+    opacity: 0.75;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-18px) scale(1.15);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .guardWing,
+  .halo,
+  .ember {
+    animation: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .actions {
+    grid-template-columns: 1fr;
+  }
+
+  .metrics {
+    gap: 0.35rem;
+  }
+}

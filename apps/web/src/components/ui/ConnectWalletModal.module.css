@@ -1,0 +1,192 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(4, 4, 8, 0.74);
+  backdrop-filter: blur(6px);
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+}
+
+.modal {
+  width: min(760px, 100%);
+  min-height: 420px;
+  background: #f2f3f8;
+  border: 1px solid rgba(12, 20, 42, 0.16);
+  border-radius: 14px;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: minmax(210px, 250px) 1fr;
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.44),
+    0 0 0 1px rgba(255, 255, 255, 0.25) inset;
+}
+
+.providerPane {
+  border-right: 1px solid rgba(10, 16, 36, 0.08);
+  padding: 1.2rem 1rem;
+  background: linear-gradient(180deg, #fbfcff 0%, #eceff8 100%);
+}
+
+.infoPane {
+  position: relative;
+  padding: 1.2rem 1.2rem 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.closeButton {
+  position: absolute;
+  top: 0.85rem;
+  right: 0.9rem;
+  width: 28px;
+  height: 28px;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(21, 31, 62, 0.08);
+  color: #2d3a66;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.closeButton:hover:not(:disabled) {
+  background: rgba(21, 31, 62, 0.15);
+}
+
+.closeButton:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.sectionTitle {
+  margin: 0;
+  font-family: "Inter", "Segoe UI", sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #131b31;
+}
+
+.providerList {
+  margin-top: 1rem;
+  display: grid;
+  gap: 0.45rem;
+}
+
+.providerButton {
+  border: 1px solid rgba(19, 33, 68, 0.16);
+  border-radius: 10px;
+  background: #ffffff;
+  color: #1a2340;
+  width: 100%;
+  padding: 0.65rem 0.7rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  cursor: pointer;
+  font-family: "Inter", "Segoe UI", sans-serif;
+  font-size: 0.92rem;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.providerButton:hover {
+  border-color: rgba(23, 46, 98, 0.36);
+  background: #f8faff;
+}
+
+.providerButtonActive {
+  border-color: rgba(13, 83, 202, 0.46);
+  background: #edf4ff;
+}
+
+.providerIcon {
+  width: 26px;
+  height: 26px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #1b4fa6, #0f8ae3);
+  color: #ffffff;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.providerName {
+  font-weight: 600;
+}
+
+.providerPitch {
+  margin: 0.45rem 0 1.2rem;
+  font-family: "Inter", "Segoe UI", sans-serif;
+  font-size: 0.9rem;
+  color: #44527a;
+}
+
+.infoBlock {
+  margin-bottom: 0.9rem;
+}
+
+.infoLabel {
+  margin: 0;
+  font-family: "Inter", "Segoe UI", sans-serif;
+  font-size: 0.96rem;
+  font-weight: 700;
+  color: #1a2442;
+}
+
+.infoText {
+  margin: 0.35rem 0 0;
+  font-family: "Inter", "Segoe UI", sans-serif;
+  font-size: 0.88rem;
+  line-height: 1.45;
+  color: #5a678d;
+}
+
+.footerActions {
+  margin-top: auto;
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.55rem;
+  padding-top: 1rem;
+}
+
+.cancelButton,
+.connectButton {
+  border: 0;
+  border-radius: 8px;
+  padding: 0.62rem 0.9rem;
+  font-family: "Inter", "Segoe UI", sans-serif;
+  font-size: 0.84rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.cancelButton {
+  background: #e7eaf4;
+  color: #2d3a66;
+}
+
+.connectButton {
+  background: linear-gradient(135deg, #2a66d8, #1149be);
+  color: #ffffff;
+}
+
+.cancelButton:disabled,
+.connectButton:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+@media (max-width: 700px) {
+  .modal {
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+
+  .providerPane {
+    border-right: 0;
+    border-bottom: 1px solid rgba(10, 16, 36, 0.08);
+  }
+}

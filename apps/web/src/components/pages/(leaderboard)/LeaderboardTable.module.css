@@ -1,0 +1,460 @@
+.leaderboardContainer {
+  position: relative;
+}
+
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  background: linear-gradient(
+    180deg,
+    rgba(18, 15, 8, 0.95) 0%,
+    rgba(12, 12, 12, 0.98) 100%
+  );
+  border: 1px solid rgba(240, 200, 104, 0.5);
+  clip-path: polygon(
+    0 0,
+    calc(100% - 20px) 0,
+    100% 20px,
+    100% 100%,
+    20px 100%,
+    0 calc(100% - 20px)
+  );
+  padding: 3rem;
+}
+
+.loadingSpinner {
+  width: 48px;
+  height: 48px;
+  border: 3px solid rgba(255, 217, 102, 0.2);
+  border-top-color: #ffd966;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.loadingText {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.9rem;
+  color: rgba(255, 217, 102, 0.7);
+  margin-top: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  background: linear-gradient(
+    180deg,
+    rgba(18, 15, 8, 0.95) 0%,
+    rgba(12, 12, 12, 0.98) 100%
+  );
+  border: 1px solid rgba(240, 200, 104, 0.5);
+  clip-path: polygon(
+    0 0,
+    calc(100% - 20px) 0,
+    100% 20px,
+    100% 100%,
+    20px 100%,
+    0 calc(100% - 20px)
+  );
+  padding: 3rem;
+}
+
+.emptyIcon {
+  color: rgba(255, 217, 102, 0.3);
+  margin-bottom: 1.5rem;
+}
+
+.emptyText {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 0.5rem;
+}
+
+.emptySubtext {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.85rem;
+  color: rgba(255, 217, 102, 0.6);
+  margin: 0;
+}
+
+.userRankCard {
+  background: linear-gradient(135deg, rgba(255, 217, 102, 0.15), rgba(255, 217, 102, 0.05));
+  border: 1px solid rgba(255, 217, 102, 0.5);
+  clip-path: polygon(
+    10px 0,
+    100% 0,
+    100% calc(100% - 10px),
+    calc(100% - 10px) 100%,
+    0 100%,
+    0 10px
+  );
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.userRankHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+
+.userRankLabel {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: rgba(255, 217, 102, 0.8);
+}
+
+.userRankBadge {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #ffd966;
+}
+
+.userRankValue {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #ffd966;
+  text-shadow: 0 0 10px rgba(255, 217, 102, 0.4);
+}
+
+.userRankStats {
+  display: flex;
+  gap: 1rem;
+}
+
+.statItem {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.8rem;
+  color: #f5ead0;
+}
+
+.tableWrapper {
+  position: relative;
+  background: linear-gradient(
+    180deg,
+    rgba(18, 15, 8, 0.95) 0%,
+    rgba(12, 12, 12, 0.98) 100%
+  );
+  border: 1px solid rgba(240, 200, 104, 0.5);
+  clip-path: polygon(
+    0 0,
+    calc(100% - 20px) 0,
+    100% 20px,
+    100% 100%,
+    20px 100%,
+    0 calc(100% - 20px)
+  );
+  padding: clamp(1.5rem, 3vw, 2rem);
+  overflow: hidden;
+}
+
+.tableHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(240, 200, 104, 0.2);
+}
+
+.tableTitle {
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #ffd966;
+  text-shadow: 0 0 12px rgba(255, 217, 102, 0.5);
+  margin: 0;
+}
+
+.periodBadge {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(28, 23, 12, 0.6);
+  border: 1px solid rgba(240, 200, 104, 0.3);
+  clip-path: polygon(
+    6px 0,
+    100% 0,
+    100% calc(100% - 6px),
+    calc(100% - 6px) 100%,
+    0 100%,
+    0 6px
+  );
+  padding: 0.5rem 1rem;
+}
+
+.periodDot {
+  width: 8px;
+  height: 8px;
+  background: #ffd966;
+  border-radius: 50%;
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+.periodText {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: rgba(255, 217, 102, 0.8);
+}
+
+.table {
+  width: 100%;
+}
+
+.tableHead {
+  display: grid;
+  grid-template-columns: 100px 1fr 120px 140px;
+  gap: 1rem;
+  padding: 0.75rem 1rem;
+  background: rgba(28, 23, 12, 0.4);
+  border: 1px solid rgba(240, 200, 104, 0.2);
+  clip-path: polygon(
+    8px 0,
+    100% 0,
+    100% calc(100% - 8px),
+    calc(100% - 8px) 100%,
+    0 100%,
+    0 8px
+  );
+  margin-bottom: 0.75rem;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(255, 217, 102, 0.7);
+}
+
+.tableBody {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.tableRow {
+  position: relative;
+  display: grid;
+  grid-template-columns: 100px 1fr 120px 140px;
+  gap: 1rem;
+  align-items: center;
+  padding: 1rem;
+  background: linear-gradient(135deg, rgba(18, 15, 8, 0.6), rgba(12, 12, 12, 0.8));
+  border: 1px solid rgba(240, 200, 104, 0.25);
+  clip-path: polygon(
+    8px 0,
+    100% 0,
+    100% calc(100% - 8px),
+    calc(100% - 8px) 100%,
+    0 100%,
+    0 8px
+  );
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.tableRow:hover {
+  border-color: #ffd966;
+  transform: translateX(4px);
+  box-shadow: 0 0 16px rgba(255, 217, 102, 0.2);
+}
+
+.tableRow:hover .rowGlow {
+  opacity: 1;
+}
+
+.tableRow.currentUser {
+  background: linear-gradient(135deg, rgba(255, 217, 102, 0.15), rgba(255, 217, 102, 0.05));
+  border-color: rgba(255, 217, 102, 0.6);
+}
+
+.rank1 {
+  border-color: rgba(255, 215, 0, 0.6);
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.15), rgba(255, 215, 0, 0.05));
+}
+
+.rank2 {
+  border-color: rgba(192, 192, 192, 0.6);
+  background: linear-gradient(135deg, rgba(192, 192, 192, 0.12), rgba(192, 192, 192, 0.04));
+}
+
+.rank3 {
+  border-color: rgba(205, 127, 50, 0.6);
+  background: linear-gradient(135deg, rgba(205, 127, 50, 0.12), rgba(205, 127, 50, 0.04));
+}
+
+.rankBadge {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: rgba(255, 217, 102, 0.8);
+}
+
+.rank1 .rankBadge {
+  color: #FFD700;
+}
+
+.rank2 .rankBadge {
+  color: #C0C0C0;
+}
+
+.rank3 .rankBadge {
+  color: #CD7F32;
+}
+
+.rankNumber {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.addressBox {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.addressText {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.85rem;
+  color: #f5ead0;
+}
+
+.youBadge {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: #0a0a0a;
+  background: #ffd966;
+  padding: 0.2rem 0.5rem;
+  border-radius: 2px;
+  letter-spacing: 0.05em;
+}
+
+.scoreValue {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #ffd966;
+  text-shadow: 0 0 8px rgba(255, 217, 102, 0.3);
+}
+
+.statChips {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.statChip {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  background: rgba(8, 8, 8, 0.6);
+  border: 1px solid rgba(240, 200, 104, 0.2);
+  clip-path: polygon(
+    4px 0,
+    100% 0,
+    100% calc(100% - 4px),
+    calc(100% - 4px) 100%,
+    0 100%,
+    0 4px
+  );
+  padding: 0.35rem 0.6rem;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.75rem;
+  color: rgba(255, 217, 102, 0.8);
+}
+
+.rowGlow {
+  position: absolute;
+  inset: -1px;
+  background: linear-gradient(135deg, rgba(255, 217, 102, 0.08), transparent 60%);
+  clip-path: polygon(
+    8px 0,
+    100% 0,
+    100% calc(100% - 8px),
+    calc(100% - 8px) 100%,
+    0 100%,
+    0 8px
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.scanline {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #ffd966, transparent);
+  animation: scanline-move 4s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse-dot {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes scanline-move {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .tableHead,
+  .tableRow {
+    grid-template-columns: 80px 1fr 100px;
+    gap: 0.75rem;
+  }
+
+  .columnStats {
+    display: none;
+  }
+
+  .statChips {
+    flex-direction: column;
+  }
+
+  .userRankCard {
+    padding: 1rem;
+  }
+}

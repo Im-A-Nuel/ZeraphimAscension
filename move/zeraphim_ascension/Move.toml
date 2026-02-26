@@ -1,0 +1,10 @@
+[package]
+name = "zeraphim_ascension"
+version = "0.0.1"
+edition = "2024.beta"
+
+[addresses]
+zeraphim_ascension = "0x0"
+
+[dependencies]
+One = { git = "https://github.com/one-chain-labs/onechain.git", subdir = "crates/sui-framework/packages/one-framework", rev = "613eda102ec09662c8d7f5c56f0e47b7453e2822" }

@@ -1,0 +1,741 @@
+﻿.dashboard {
+  min-height: 100vh;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 20% 80%, rgba(234, 166, 53, 0.08), transparent 40%),
+    radial-gradient(circle at 80% 20%, rgba(218, 134, 23, 0.06), transparent 35%),
+    #050505;
+  padding: clamp(1rem, 2vw, 2rem);
+}
+
+.dashboard::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 2px,
+    rgba(255, 217, 102, 0.02) 2px,
+    rgba(255, 217, 102, 0.02) 4px
+  );
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.6;
+}
+
+.celestialBackdrop {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+  overflow: hidden;
+}
+
+.backdropWing {
+  position: absolute;
+  width: clamp(220px, 30vw, 420px);
+  height: auto;
+  opacity: 0.09;
+  filter: drop-shadow(0 0 24px rgba(255, 217, 102, 0.24));
+}
+
+.backdropWingLeft {
+  top: 14%;
+  left: -7%;
+  transform: rotate(-16deg);
+  animation: wing-drift-left 13s ease-in-out infinite;
+}
+
+.backdropWingRight {
+  top: 16%;
+  right: -7%;
+  transform: scaleX(-1) rotate(-16deg);
+  animation: wing-drift-right 13s ease-in-out infinite;
+}
+
+.backdropHalo {
+  position: absolute;
+  top: 5%;
+  left: 50%;
+  width: clamp(110px, 14vw, 220px);
+  height: auto;
+  transform: translateX(-50%);
+  opacity: 0.16;
+  filter: drop-shadow(0 0 36px rgba(255, 217, 102, 0.4));
+  animation: halo-breathe 9s ease-in-out infinite;
+}
+
+.backdropCore {
+  position: absolute;
+  top: 3%;
+  left: 50%;
+  width: min(640px, 75vw);
+  height: 220px;
+  transform: translateX(-50%);
+  background:
+    radial-gradient(ellipse at center, rgba(255, 217, 102, 0.18), rgba(255, 217, 102, 0.05) 45%, transparent 74%),
+    radial-gradient(ellipse at center, rgba(255, 240, 188, 0.12), transparent 72%);
+  filter: blur(30px);
+  opacity: 0.52;
+  animation: core-flicker 11s ease-in-out infinite;
+}
+
+.header {
+  position: relative;
+  z-index: 12;
+  max-width: 1600px;
+  margin: 0 auto clamp(1.5rem, 3vw, 2rem);
+  padding: clamp(0.85rem, 1.6vw, 1rem);
+  border: 1px solid rgba(240, 200, 104, 0.36);
+  border-radius: 16px;
+  background:
+    linear-gradient(90deg, rgba(13, 12, 9, 0.95), rgba(14, 10, 5, 0.88)),
+    radial-gradient(circle at 20% 20%, rgba(255, 217, 102, 0.14), transparent 52%);
+  box-shadow:
+    0 10px 28px rgba(0, 0, 0, 0.45),
+    0 0 22px rgba(255, 217, 102, 0.14);
+  overflow: visible;
+}
+
+.navShell {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 1rem;
+}
+
+.navBrand {
+  display: flex;
+  align-items: center;
+  gap: 0.72rem;
+  min-width: 0;
+}
+
+.navBrandIcon {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 8px rgba(255, 217, 102, 0.45));
+  opacity: 0.95;
+}
+
+.brandText {
+  min-width: 0;
+}
+
+.dashboardTitle {
+  margin: 0;
+  font-family: "Orbitron", sans-serif;
+  font-size: clamp(1rem, 1.7vw, 1.2rem);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #ffd966;
+  text-shadow: 0 0 16px rgba(255, 217, 102, 0.35);
+  white-space: nowrap;
+}
+
+.dashboardSubtitle {
+  margin: 0.18rem 0 0;
+  font-family: "Share Tech Mono", monospace;
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  letter-spacing: 0.13em;
+  color: rgba(255, 217, 102, 0.62);
+  white-space: nowrap;
+}
+
+.navLinks {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.48rem;
+  min-width: 0;
+}
+
+.navItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.38rem;
+  font-family: "Share Tech Mono", monospace;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.11em;
+  color: #f8f0da;
+  text-decoration: none;
+  padding: 0.54rem 0.8rem;
+  border: 1px solid rgba(240, 200, 104, 0.25);
+  border-radius: 10px;
+  background: rgba(10, 10, 10, 0.72);
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.navItem:hover {
+  color: #ffe9a8;
+  border-color: rgba(255, 217, 102, 0.62);
+  box-shadow: 0 0 14px rgba(255, 217, 102, 0.18);
+}
+
+.playMenu {
+  position: relative;
+}
+
+.playTrigger {
+  border-color: rgba(255, 217, 102, 0.42);
+}
+
+.playActive {
+  border-color: rgba(255, 217, 102, 0.78);
+  background: linear-gradient(135deg, rgba(82, 60, 18, 0.78), rgba(38, 28, 9, 0.92));
+  color: #fff7dc;
+  box-shadow:
+    inset 0 0 14px rgba(255, 217, 102, 0.18),
+    0 0 18px rgba(255, 217, 102, 0.18);
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
+}
+
+.playDropdown {
+  position: absolute;
+  top: calc(100% + 0.45rem);
+  left: 0;
+  z-index: 40;
+  min-width: 200px;
+  display: grid;
+  gap: 0.28rem;
+  padding: 0.5rem;
+  border: 1px solid rgba(255, 217, 102, 0.35);
+  border-radius: 10px;
+  background: rgba(10, 10, 10, 0.98);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.48);
+}
+
+.playDropdown a {
+  text-decoration: none;
+  color: #f6ebc9;
+  font-family: "Share Tech Mono", monospace;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  padding: 0.46rem 0.52rem;
+  border-radius: 8px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.playDropdown a:hover {
+  background: rgba(255, 217, 102, 0.14);
+  color: #fff4cb;
+}
+
+.navControls {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.45rem;
+  flex-wrap: wrap;
+}
+
+.controlButton {
+  border: 1px solid rgba(240, 200, 104, 0.32);
+  background: rgba(8, 8, 8, 0.78);
+  color: #f2e8c8;
+  padding: 0.54rem 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.66rem;
+  font-family: "Share Tech Mono", monospace;
+  border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.34rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.controlButton:hover {
+  border-color: rgba(255, 217, 102, 0.56);
+  color: #fff7df;
+}
+
+.connectButton {
+  border: 1px solid rgba(255, 217, 102, 0.68);
+  background: linear-gradient(135deg, #f3cc66, #d5a93e);
+  color: #161105;
+  padding: 0.62rem 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.7rem;
+  font-family: "Share Tech Mono", monospace;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 700;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.connectButton:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 0 16px rgba(255, 217, 102, 0.3);
+}
+
+.accountMenu {
+  position: relative;
+}
+
+.accountTrigger {
+  border: 1px solid rgba(255, 217, 102, 0.42);
+  background: rgba(10, 10, 10, 0.82);
+  color: #f8eecd;
+  padding: 0.56rem 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  font-size: 0.69rem;
+  font-family: "Share Tech Mono", monospace;
+  border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.32rem;
+  cursor: pointer;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.accountTrigger:hover {
+  border-color: rgba(255, 217, 102, 0.7);
+  box-shadow: 0 0 14px rgba(255, 217, 102, 0.2);
+}
+
+.accountDropdown {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 0.42rem);
+  z-index: 42;
+  width: min(340px, 78vw);
+  border: 1px solid rgba(255, 217, 102, 0.34);
+  border-radius: 12px;
+  background: rgba(8, 8, 8, 0.98);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.54);
+  padding: 0.65rem;
+  display: grid;
+  gap: 0.54rem;
+}
+
+.accountMeta {
+  border: 1px solid rgba(240, 200, 104, 0.22);
+  border-radius: 10px;
+  background: rgba(16, 14, 10, 0.85);
+  padding: 0.52rem;
+}
+
+.walletTypeTag {
+  display: inline-flex;
+  align-items: center;
+  font-family: "Share Tech Mono", monospace;
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #ffd966;
+  border: 1px solid rgba(255, 217, 102, 0.36);
+  border-radius: 999px;
+  padding: 0.2rem 0.44rem;
+}
+
+.accountAddress {
+  margin: 0.45rem 0 0;
+  color: rgba(255, 236, 185, 0.9);
+  font-size: 0.69rem;
+  line-height: 1.5;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  overflow-wrap: anywhere;
+}
+
+.disconnectButton {
+  border: 1px solid rgba(255, 109, 109, 0.48);
+  background: rgba(49, 17, 17, 0.75);
+  color: rgba(255, 176, 176, 0.95);
+  padding: 0.58rem 0.72rem;
+  border-radius: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  font-size: 0.65rem;
+  font-family: "Share Tech Mono", monospace;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.disconnectButton:hover {
+  border-color: rgba(255, 136, 136, 0.72);
+  color: #ffd6d6;
+  box-shadow: 0 0 12px rgba(255, 120, 120, 0.16);
+}
+
+.networkHint,
+.networkWarning {
+  margin: 0;
+  padding: 0.58rem 0.2rem 0.2rem;
+  font-family: "Share Tech Mono", monospace;
+  font-size: 0.66rem;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.networkHint {
+  color: rgba(255, 217, 102, 0.62);
+}
+
+.networkWarning {
+  color: rgba(255, 120, 120, 0.9);
+}
+
+.headerGlow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(255, 217, 102, 0.95) 50%, transparent);
+  opacity: 0.85;
+}
+
+.dashboardGrid {
+  position: relative;
+  z-index: 11;
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: clamp(1rem, 2vw, 1.5rem);
+  max-width: 1600px;
+  margin: 0 auto;
+  align-items: start;
+}
+
+.profileSection {
+  grid-column: span 12;
+}
+
+.questSection {
+  grid-column: span 12;
+}
+
+.sideRail {
+  grid-column: span 12;
+  min-width: 0;
+}
+
+.sidePanel {
+  position: relative;
+  border: 1px solid rgba(240, 200, 104, 0.38);
+  border-radius: 14px;
+  background:
+    linear-gradient(180deg, rgba(14, 12, 8, 0.98) 0%, rgba(8, 8, 8, 0.98) 100%),
+    radial-gradient(circle at 70% 0%, rgba(255, 217, 102, 0.12), transparent 58%);
+  padding: 0.8rem;
+  box-shadow:
+    0 10px 24px rgba(0, 0, 0, 0.45),
+    inset 0 0 22px rgba(255, 217, 102, 0.06);
+}
+
+.sidePanelHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.58rem;
+}
+
+.sidePanelTitle {
+  margin: 0;
+  font-family: "Orbitron", sans-serif;
+  font-size: 0.84rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #ffe8aa;
+}
+
+.sidePanelLinks {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.sidePanelLink {
+  text-decoration: none;
+  font-family: "Share Tech Mono", monospace;
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: rgba(255, 225, 151, 0.9);
+  border: 1px solid rgba(240, 200, 104, 0.28);
+  border-radius: 8px;
+  padding: 0.34rem 0.5rem;
+  background: rgba(14, 12, 8, 0.85);
+  transition: all 0.2s ease;
+}
+
+.sidePanelLink:hover {
+  color: #fff0c4;
+  border-color: rgba(255, 217, 102, 0.6);
+}
+
+.sideTabRow {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.34rem;
+}
+
+.sideTab {
+  border: 1px solid rgba(240, 200, 104, 0.26);
+  background: rgba(9, 9, 9, 0.72);
+  color: rgba(255, 231, 176, 0.8);
+  font-family: "Share Tech Mono", monospace;
+  font-size: 0.63rem;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  border-radius: 9px;
+  padding: 0.46rem 0.44rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.sideTab:hover {
+  border-color: rgba(255, 217, 102, 0.52);
+  color: #fff0c1;
+}
+
+.sideTabActive {
+  border-color: rgba(255, 217, 102, 0.8);
+  background: linear-gradient(140deg, rgba(86, 64, 22, 0.72), rgba(33, 24, 8, 0.92));
+  color: #fff4d3;
+  box-shadow:
+    inset 0 0 12px rgba(255, 217, 102, 0.15),
+    0 0 14px rgba(255, 217, 102, 0.14);
+}
+
+.sideTabContent {
+  margin-top: 0.62rem;
+  min-width: 0;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 217, 102, 0.4) rgba(14, 12, 8, 0.8);
+}
+
+@media (max-width: 1220px) {
+  .navShell {
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
+  }
+
+  .navLinks {
+    justify-content: flex-start;
+    overflow-x: auto;
+    padding-bottom: 0.15rem;
+  }
+
+  .navLinks::-webkit-scrollbar {
+    height: 3px;
+  }
+
+  .navLinks::-webkit-scrollbar-thumb {
+    background: rgba(255, 217, 102, 0.35);
+    border-radius: 999px;
+  }
+
+  .navControls {
+    justify-content: flex-start;
+  }
+}
+
+@media (min-width: 768px) {
+  .sidePanelHeader {
+    gap: 0.65rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .profileSection {
+    grid-column: span 12;
+  }
+
+  .questSection {
+    grid-column: span 8;
+    grid-row: 2;
+  }
+
+  .sideRail {
+    grid-column: span 4;
+    grid-row: 2;
+    align-self: start;
+    position: sticky;
+    top: 0.9rem;
+  }
+
+  .sideRail::before {
+    content: "";
+    position: absolute;
+    inset: 8% -8% auto auto;
+    width: 180px;
+    height: 260px;
+    background:
+      radial-gradient(ellipse at 70% 40%, rgba(255, 217, 102, 0.12), transparent 65%),
+      radial-gradient(ellipse at 20% 70%, rgba(255, 217, 102, 0.06), transparent 70%);
+    filter: blur(14px);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .sidePanel {
+    position: relative;
+    z-index: 1;
+  }
+
+  .sideTabContent {
+    max-height: calc(100vh - 185px);
+    overflow-y: auto;
+    padding-right: 0.28rem;
+  }
+
+  .sideTabContent::-webkit-scrollbar {
+    width: 5px;
+    background: rgba(10, 10, 10, 0.6);
+  }
+
+  .sideTabContent::-webkit-scrollbar-thumb {
+    background: rgba(255, 217, 102, 0.38);
+    border-radius: 999px;
+  }
+}
+
+@media (min-width: 1360px) {
+  .questSection {
+    grid-column: span 9;
+    grid-row: 2;
+  }
+
+  .sideRail {
+    grid-column: span 3;
+    grid-row: 2;
+  }
+}
+
+@media (max-width: 640px) {
+  .dashboard {
+    padding: 0.75rem;
+  }
+
+  .header {
+    padding: 0.72rem;
+  }
+
+  .dashboardTitle {
+    font-size: 0.92rem;
+    letter-spacing: 0.07em;
+  }
+
+  .dashboardSubtitle {
+    font-size: 0.56rem;
+  }
+
+  .navItem {
+    padding: 0.52rem 0.68rem;
+    font-size: 0.66rem;
+  }
+
+  .controlButton span {
+    display: none;
+  }
+
+  .controlButton {
+    min-width: 34px;
+    justify-content: center;
+    padding-inline: 0.45rem;
+  }
+
+  .connectButton,
+  .accountTrigger {
+    padding: 0.58rem 0.72rem;
+    font-size: 0.64rem;
+  }
+
+  .playDropdown,
+  .accountDropdown {
+    width: min(90vw, 300px);
+  }
+
+  .sideRail {
+    position: static;
+    top: auto;
+  }
+
+  .sidePanelHeader {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .sidePanelLinks {
+    width: 100%;
+  }
+
+  .sidePanelLink {
+    flex: 1;
+    text-align: center;
+  }
+
+  .sideTab {
+    font-size: 0.58rem;
+    padding: 0.42rem 0.3rem;
+  }
+}
+
+@keyframes wing-drift-left {
+  0%,
+  100% {
+    transform: rotate(-16deg) translateY(0);
+  }
+  50% {
+    transform: rotate(-12deg) translateY(-8px);
+  }
+}
+
+@keyframes wing-drift-right {
+  0%,
+  100% {
+    transform: scaleX(-1) rotate(-16deg) translateY(0);
+  }
+  50% {
+    transform: scaleX(-1) rotate(-12deg) translateY(-8px);
+  }
+}
+
+@keyframes halo-breathe {
+  0%,
+  100% {
+    transform: translateX(-50%) scale(0.96);
+    opacity: 0.12;
+  }
+  50% {
+    transform: translateX(-50%) scale(1.06);
+    opacity: 0.2;
+  }
+}
+
+@keyframes core-flicker {
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 0.62;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .backdropWing,
+  .backdropHalo,
+  .backdropCore {
+    animation: none;
+  }
+}

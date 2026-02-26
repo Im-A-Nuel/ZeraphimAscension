@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:argus.gg)",
+      "Bash(tail:*)"
+    ]
+  }
+}

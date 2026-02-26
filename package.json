@@ -1,0 +1,16 @@
+{
+  "name": "zeraphim-ascension",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev:web": "pnpm --filter web dev",
+    "dev:api": "pnpm --filter api dev",
+    "build:web": "pnpm --filter web build",
+    "build:api": "pnpm --filter api build",
+    "build": "pnpm -r build",
+    "lint": "pnpm -r lint",
+    "faucet": "pnpm --filter scripts faucet",
+    "deploy:move": "bash scripts/deploy-move.sh"
+  },
+  "packageManager": "pnpm@9.15.0"
+}
